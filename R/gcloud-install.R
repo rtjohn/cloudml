@@ -18,6 +18,10 @@
 #
 # @name gcloud-paths
 # @keywords internal
+gcloud_binary_default <- function() {
+  Sys.getenv("GCLOUD_INSTALL_PATH", "~/google-cloud-sdk")
+}
+
 gcloud_binary <- function() {
 
   user_path <- user_setting("gcloud.binary.path")
@@ -45,10 +49,6 @@ gcloud_binary <- function() {
       return(normalizePath(candidate()))
 
   stop("failed to find 'gcloud' binary")
-}
-
-gcloud_binary_default <- function() {
-  Sys.getenv("GCLOUD_INSTALL_PATH", "~/google-cloud-sdk")
 }
 
 #' Install the Google Cloud SDK
